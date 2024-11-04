@@ -4,35 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slideshow</title>
+    <style>
+        .slide{
+            height: 300px;
+            width: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .container{
+            margin: 50px auto;
+            width: fit-content;
+            position: relative;
+        }
+        .btn{
+            height: 30px;
+            width: 100px;
+            position: absolute;
+            border-radius: 20px;
+            background-color: #d9d9d9;
+            color: black;
+            cursor: pointer;
+
+        }
+        .btn-pre{
+            left: 50px;
+            top: 100%;
+        }
+        .btn-next{
+            right: 50px;
+            top: 100%;
+        }
+
+    </style>
 </head>
 <body>
     <div class="container">
-        <img src="./img/blackforest-cake.jpg" class="slide"/>
+        <img src="./img/butterscotch.jpg" class="slide" id="slide"/>
+        <button class="btn btn-pre" onclick="previous()">Previous</button>
+        <button class="btn btn-next" onclick="next()">Next</button>
     </div>
 
 
+<script>
+    const images = ["img/butterscotch.jpg", "img/chocolate.jpg", "img/redvelvet.jpg", "img/vanilla.jpg"];
 
+    let index=0;
+    const slide = document.getElementById('slide');
 
+    function next(){
+        if(index < images.length -1){
+            index++;
+        }
+        else{
+            index = 0;
+        }
+        index++;
 
- 
+        slide.src = images[index]
+    }
 
+    function previous(){
+       if(index>0){
+        index--;
+       }
+       else{
+        index = images.length -1;
+       }
 
+        slide.src = images[index]
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+</script>   
 </body>
 </html>
